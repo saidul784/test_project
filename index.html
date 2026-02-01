@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Roadmap Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                    <rect width="40" height="40" rx="8" fill="#6366f1"/>
+                    <path d="M20 10L28 16V24L20 30L12 24V16L20 10Z" stroke="white" stroke-width="2" fill="none"/>
+                </svg>
+                <h1>CareerPath</h1>
+            </div>
+            <p class="tagline">Your personalized tech career roadmap</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Input Section -->
+            <section class="input-section" id="inputSection">
+                <div class="card">
+                    <h2>What's your dream role?</h2>
+                    <p class="subtitle">Enter the tech role you aspire to achieve</p>
+                    
+                    <form id="roleForm">
+                        <div class="form-group">
+                            <label for="roleInput">Desired Role</label>
+                            <input 
+                                type="text" 
+                                id="roleInput" 
+                                placeholder="e.g., ML Engineer, Frontend Developer, DevOps Engineer"
+                                required
+                            >
+                            <div class="popular-roles">
+                                <span class="label">Popular:</span>
+                                <button type="button" class="role-tag" data-role="ML Engineer">ML Engineer</button>
+                                <button type="button" class="role-tag" data-role="Frontend Developer">Frontend Developer</button>
+                                <button type="button" class="role-tag" data-role="Backend Developer">Backend Developer</button>
+                                <button type="button" class="role-tag" data-role="DevOps Engineer">DevOps Engineer</button>
+                                <button type="button" class="role-tag" data-role="Full Stack Developer">Full Stack Developer</button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="experienceLevel">Current Experience Level</label>
+                            <select id="experienceLevel" required>
+                                <option value="">Select your level</option>
+                                <option value="beginner">Beginner (0-1 years)</option>
+                                <option value="intermediate">Intermediate (1-3 years)</option>
+                                <option value="advanced">Advanced (3+ years)</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn-primary" id="generateBtn">
+                            <span>Generate My Roadmap</span>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M4 10H16M16 10L10 4M16 10L10 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Loading Section -->
+            <section class="loading-section hidden" id="loadingSection">
+                <div class="card">
+                    <div class="loading-content">
+                        <div class="spinner"></div>
+                        <h3>Analyzing Industry Standards...</h3>
+                        <p id="loadingText">Comparing with current industry expectations</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section hidden" id="resultsSection">
+                <div class="results-header">
+                    <button class="btn-back" id="backBtn">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M16 10H4M4 10L10 16M4 10L10 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        Start Over
+                    </button>
+                    <h2 id="roleTitle">ML Engineer Roadmap</h2>
+                    <button class="btn-secondary" id="downloadBtn">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M10 4V12M10 12L7 9M10 12L13 9M4 16H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        Download PDF
+                    </button>
+                </div>
+
+                <!-- Industry Comparison -->
+                <div class="card industry-card">
+                    <h3>Industry Standards Analysis</h3>
+                    <div id="industryComparison"></div>
+                </div>
+
+                <!-- Roadmap Tabs -->
+                <div class="roadmap-tabs">
+                    <button class="tab-btn active" data-tab="30">30 Days</button>
+                    <button class="tab-btn" data-tab="60">60 Days</button>
+                    <button class="tab-btn" data-tab="90">90 Days</button>
+                </div>
+
+                <!-- Roadmap Content -->
+                <div class="roadmap-content">
+                    <div class="tab-content active" id="tab30"></div>
+                    <div class="tab-content" id="tab60"></div>
+                    <div class="tab-content" id="tab90"></div>
+                </div>
+
+                <!-- Project Ideas -->
+                <div class="card projects-card">
+                    <h3>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                            <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                            <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                        </svg>
+                        Project Ideas
+                    </h3>
+                    <div id="projectIdeas"></div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Built with passion for aspiring tech professionals</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
